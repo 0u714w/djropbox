@@ -15,6 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from djropbox.file_uploader.models import DjropboxUser, Folder, NewFile
+
+admin.site.register(DjropboxUser)
+admin.site.register(Folder)
+admin.site.register(NewFile)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
