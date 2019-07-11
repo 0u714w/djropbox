@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang='en' class='d-flex h-100 align-items-center'>
+    <head>
+        <meta charset='UTF-8' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <meta http-equiv='X-UA-Compatible' content='ie=edge' />
+        <title>Login</title>
+    </head>
+    <body>
+        {% if user.is_authenticated %}
+        {% include 'navbar.html' %}
+        {% endif %}
+        <h1>{{ header }}</h1>
+        <br />
+        <form action='' method='post'>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type='submit' value='{{ button_val }}' id='button' />
+        </form>
+        {% if request.get_full_path == '/login/' or request.get_full_path == '/login/?next=/' or request.get_full_path == '/login/?next=/notifications/' or request.get_full_path == '/login/?next=/twang/' %}
+        <a href='/signup/'><button>Signup</button></a>
+        {% elif request.get_full_path == '/signup/' or request.get_full_path == '/signup/?next=/' %}
+        <a href='/login/'><button>Login</button></a>
+        {% endif %}
+    </body>
+</html>
