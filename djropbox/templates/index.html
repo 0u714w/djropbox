@@ -11,10 +11,12 @@
 
     <body>
     <h1>Welcome to Djropbox</h1>
-    
+    {% if user.is_authenticated %}
+    <a href='/logout/'><button class="button">Logout</button></a>
+    {% else %}
     <a href='/signup/'><button class="button">Signup</button></a>
     <a href='/login/'><button class="button">Login</button></a>
-
+    {% endif %}
     </body>
 
 </html>

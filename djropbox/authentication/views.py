@@ -38,6 +38,6 @@ class LoginView(View):
 
 class LogoutView(View):
     def get(self, request):
-        html = 'logout.html'
+        html = 'index.html'
         logout(request)
         return render(request, html)
