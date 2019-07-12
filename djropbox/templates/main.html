@@ -1,0 +1,28 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang='en' class='d-flex h-100 align-items-center'>
+    <head>
+        <meta charset='UTF-8' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <meta http-equiv='X-UA-Compatible' content='ie=edge' />
+        <link rel="stylesheet" href="{% static 'style.css' %}" />
+        <title>Login</title>
+    </head>
+    <body>
+        {% if user.is_authenticated %}
+        {% include 'navbar.html' %}
+        {% endif %}
+        <h1>{{ header }}</h1>
+        <br />
+        <form action='' method='post'>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type='submit' value='{{ button_val }}' id='button' class="button" />
+        </form>
+        {% if request.get_full_path == '/login/' or request.get_full_path == '/login/?next=/' %}
+        <a href='/signup/'><button class="button">Signup</button></a>
+        {% elif request.get_full_path == '/signup/' or request.get_full_path == '/signup/?next=/' %}
+        <a href='/login/'><button class="button">Login</button></a>
+        {% endif %}
+    </body>
+</html>

@@ -1,9 +1,7 @@
 {
     "_meta": {
         "hash": {
-
-            "sha256": "48ac31cc1a7ea921c432472392c184f255e4f67719c1677eb892d7530b1f88fe"
-
+            "sha256": "e6dde7250a510bb2157d9a1faaa859f792a61ad2b3e72097f0f53f0436ee0790"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -20,11 +18,11 @@
     "default": {
         "django": {
             "hashes": [
-                "sha256:4d23f61b26892bac785f07401bc38cbf8fa4cec993f400e9cd9ddf28fd51c0ea",
-                "sha256:6e974d4b57e3b29e4882b244d40171d6a75202ab8d2402b8e8adbd182e25cf0c"
+                "sha256:830d5d40a1705089502bba70605ab3246831440ffc16d1501dfeeef5f4b9c845",
+                "sha256:94395804ad80f68d66090a74d68ff2583b43333e1785a026c2aa10cf161642a6"
             ],
-
-            "version": "==2.2.3"
+            "index": "pypi",
+            "version": "==1.11.22"
         },
         "django-js-asset": {
             "hashes": [
@@ -35,13 +33,11 @@
         },
         "django-mptt": {
             "hashes": [
-                "sha256:6bf9eb26e54e92006ca82108a1c946c7df533ec27bddf3f795a83a32a3d1b04b",
-                "sha256:c765c1501dd0b5c22f0ca8b948550bd294cd2db68aefa0560c6ed7fcfdf4b95e"
+                "sha256:18a41d1b56ca7c02a5b04d246e33ee2d18f6ee5459c02ed1d945f5abdef23a2e",
+                "sha256:689a04cce0981671d6061a9928c33a16b47abb0d4cd43cf7dec31ae284fdae9d"
             ],
             "index": "pypi",
-            "version": "==0.10.0"
-
-         
+            "version": "==0.9.1"
         },
         "pytz": {
             "hashes": [
@@ -49,13 +45,6 @@
                 "sha256:d747dd3d23d77ef44c6a3526e274af6efeb0a6f1afd5a69ba4d5be4098c8e141"
             ],
             "version": "==2019.1"
-        },
-        "sqlparse": {
-            "hashes": [
-                "sha256:40afe6b8d4b1117e7dff5504d7a8ce07d9a1b15aeeade8a2d10f130a834f8177",
-                "sha256:7c3dca29c022744e95b547e867cee89f4fce4373f3549ccd8797d8eb52cdb873"
-            ],
-            "version": "==0.3.0"
         }
     },
     "develop": {}

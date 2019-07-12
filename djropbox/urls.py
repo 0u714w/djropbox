@@ -18,6 +18,8 @@ from django.urls import path
 from djropbox.views import index
 
 from djropbox.file_uploader.models import DjropboxUser, Folder, NewFile
+from djropbox.authentication.views import LoginView, LogoutView
+from djropbox.user.views import signup_user
 
 admin.site.register(DjropboxUser)
 admin.site.register(Folder)
@@ -26,5 +28,8 @@ admin.site.register(NewFile)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index)
+    path('', index),
+    path('login/', LoginView.as_view()),
+    path('logout/', LogoutView.as_view()),
+    path('signup/', signup_user)
 ]
