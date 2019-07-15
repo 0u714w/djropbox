@@ -9,7 +9,9 @@
         <title>Login</title>
     </head>
     <body>
+
         {% if user.is_authenticated %}
+
         {% include 'navbar.html' %}
         {% endif %}
         <h1>{{ header }}</h1>

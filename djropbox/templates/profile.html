@@ -1,0 +1,28 @@
+<h2> Welcome {{ user }}</h2>
+<h3> Your Files </h3>
+<div>
+    {% for object in data.files %}
+    <li><a href="{{ object.document.url }}">{{ object.name }}</a></li>
+    {% endfor %}
+</div>
+<br>
+<br>
+<h3> Your Folders </h3>
+<div>
+    {{ homefolder }}
+    {% for item in data.children %}
+        <li><a href="/folder/{{ item.id }}">{{ item.name }}</a></li>
+    {% endfor %}
+</div>
+<br>
+<br>
+
+<form action='/add_folder/' method=""></form>
+{%  csrf_token %}
+<a href="/add_folder/">Create a folder</a>
+<form action='/add_file/' method="" enctype="multipart/form-data">
+    {% csrf_token %}
+        <a href='/add_file/'> Add a file </a>
+        </form>
+
+<a href="/">Home</a>

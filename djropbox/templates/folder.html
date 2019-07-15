@@ -1,0 +1,14 @@
+<h1>{{ user }}'s Folder </h1>
+            <div>
+                <h3>Current Folder - {{ data.currentfolder }}</h3>
+
+                {% for child in data.children %}
+                    <li><a href="/folder/{{ child.id }}">{{ child.name }}</a></li>
+                {% endfor %}
+                <h4>Files</h4>
+                {% for document in structure.documents %}
+                    <li><a href="{{ document.document.url }}">{{document.name}}</li>
+                {% endfor %}
+            </div>
+
+<a href="/profile">Back</a>

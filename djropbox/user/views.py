@@ -4,6 +4,7 @@ from django.shortcuts import render, HttpResponseRedirect, reverse
 from django.views import View
 from djropbox.user.forms import SignupForm
 from djropbox.user.models import BoxUser
+from djropbox.file_uploader.models import Folder
 
 
 def signup_user(request):
@@ -21,11 +22,15 @@ def signup_user(request):
                 username=data['username'], password=data['password']
             )
             login(request, user)
-            BoxUser.objects.create(
+            boxuser = BoxUser.objects.create(
                 username=data['username'],
                 user=user
             )
-            return HttpResponseRedirect(reverse('home'))
+            Folder.objects.create(
+                name="home",
+                creator=boxuser
+            )
+            return HttpResponseRedirect(request.GET.get('next', '/'))
 
     else:
         form = SignupForm()

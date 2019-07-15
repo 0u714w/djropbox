@@ -12,6 +12,7 @@
     <body>
     <h1>Welcome to Djropbox</h1>
     {% if user.is_authenticated %}
+        <a href="profile">Go to your Profile</a>
     <a href='/logout/'><button class="button">Logout</button></a>
     {% else %}
     <a href='/signup/'><button class="button">Signup</button></a>

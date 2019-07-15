@@ -2,6 +2,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, HttpResponseRedirect
 from django.views import View
 from djropbox.authentication.forms import LoginForm
+from django.contrib.auth.decorators import login_required
+from djropbox.file_uploader.models import Folder, NewFile
+from djropbox.user.models import BoxUser
 
 
 class LoginView(View):
@@ -41,3 +44,58 @@ class LogoutView(View):
         html = 'index.html'
         logout(request)
         return render(request, html)
+
+@login_required()
+def profile_view(request):
+    print(request.user.boxuser)
+    user = request.user
+    djropbox_user = request.user.boxuser.username
+    myfolder_list = Folder.objects.filter(creator=request.user.boxuser)
+    object_list = NewFile.objects.all()
+    homefolder = Folder.objects.filter(creator=request.user.boxuser).filter(name='home').first()
+    potentialfolder = Folder.objects.filter(creator=request.user.boxuser).filter(name='home').first()
+    data = {
+        'currentfolder': potentialfolder,
+        'files': NewFile.objects.filter(folder=potentialfolder),
+        'children': potentialfolder.get_children(),
+    }
+    print(potentialfolder)
+
+    context = {
+        'DjropboxUser': BoxUser,
+        'user': user,
+        'Djropbox_user': djropbox_user,
+        'object_list': object_list,
+        'data': data,
+        'homefolder': homefolder,
+    }
+    return render(request, 'profile.html', context)
+
+@login_required()
+def folder_view(request, id):
+    user = request.user
+    folder_list = Folder.objects.all()
+    myfolder_list = Folder.objects.filter(creator=request.user.boxuser)
+    object_list = NewFile.objects.all()
+    potentialfolder = Folder.objects.filter(creator=request.user.boxuser).filter(id=id).first()
+    data = {
+       'currentfolder': potentialfolder,
+       'files': NewFile.objects.filter(folder=potentialfolder),
+       'children': potentialfolder.get_children(),
+    }
+
+    structure = {
+        'documents': data['files']
+
+    }
+
+    context = {
+        'DjropboxUser': BoxUser,
+        'user': user,
+        'data': data,
+        'structure': structure
+    }
+    return render(request, 'folder.html', context)
+
+def success_view(request):
+    return render(request, 'success.html')
