@@ -33,11 +33,11 @@ class FileView(View):
     initial = {'key': 'value'}
     html = 'fileform.html'
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         form = self.file_form(request.user.boxuser, initial=self.initial)
         return render(request, self.html, {'form': form})
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request):
         form = self.file_form(request.user.boxuser, request.POST, request.FILES)
         if form.is_valid():
             data = form.cleaned_data

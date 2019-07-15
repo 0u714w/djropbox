@@ -20,5 +20,5 @@ class Folder(MPTTModel):
 class NewFile(models.Model):
     folder = TreeForeignKey(Folder, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
-    document = models.FileField()
+    document = models.FileField(upload_to='documents/')
     time_created = models.DateTimeField(auto_now_add=True)

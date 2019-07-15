@@ -41,4 +41,4 @@ urlpatterns = [
     path('folder/<int:id>', folder_view),
     path('add_file/', FileView.as_view()),
     path('success/', success_view)
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

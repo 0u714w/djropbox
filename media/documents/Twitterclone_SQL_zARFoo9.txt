@@ -1,0 +1,35 @@
+Twitterclone: The SQL
+
+Part 1:
+
+brew intstall postgresql
+createdb twitter
+psql twitter
+
+create table tweets (tweet varchar(140) not null, tweet_id serial, tweet_date date  not null default current_date, tweet_user varchar(25) not null);
+
+create table twitteruser (username varchar(25) not null, password varchar(50) not null);
+
+create table notification (notification_id serial, notification_sender varchar(25) not null, notification_receiver varchar(25) not null);
+
+Part 2;
+
+select count(tweet) from tweets where tweet_user = (select username from twitteruser);
+
+select tweet_date, tweet from tweets where tweet_user = 'sam';
+
+insert into twitteruser (username, password) values ('sam', 'password');
+
+select username, password from twitteruser where twitteruser.username = 'sam';
+
+insert into tweets (tweet, tweet_user) values('this is a new tweet', 'sam');
+
+select notification_id from notification where notification_receiver = (select username from twitteruser);
+
+select notification_receiver, notification_sender from notification inner join tweets on tweets.tweet_user = notification_receiver;
+
+Extra credit: 
+
+delete from tweets where tweet_id = 2;
+
+delete from twitteruser where username = 'sam'; delete from tweets where tweet_user = 'sam';
