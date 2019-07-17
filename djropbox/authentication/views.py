@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, HttpResponseRedirect
 from django.views import View
@@ -32,6 +33,10 @@ class LoginView(View):
             if user is not None:
                 login(request, user)
                 return HttpResponseRedirect(request.GET.get('next', '/'))
+            
+            else:
+                messages.info(request, 'Username and/or password do not match')
+                return HttpResponseRedirect('/login')
 
         return render(request, self.template_name,
                       {'header': self.header, 'form': form,

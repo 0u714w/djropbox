@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.shortcuts import render, HttpResponseRedirect, reverse
@@ -18,19 +19,27 @@ def signup_user(request):
 
         if form.is_valid():
             data = form.cleaned_data
-            user = User.objects.create_user(
-                username=data['username'], password=data['password']
-            )
-            login(request, user)
-            boxuser = BoxUser.objects.create(
-                username=data['username'],
-                user=user
-            )
-            Folder.objects.create(
-                name="home",
-                creator=boxuser
-            )
-            return HttpResponseRedirect(request.GET.get('next', '/'))
+            username = data['username']
+
+            if not (User.objects.filter(username=username).exists()):
+                user = User.objects.create_user(
+                    username=data['username'], password=data['password']
+                )
+                login(request, user)
+                boxuser = BoxUser.objects.create(
+                    username=data['username'],
+                    user=user
+                )
+                Folder.objects.create(
+                    name="home",
+                    creator=boxuser
+                )
+
+                return HttpResponseRedirect(request.GET.get('next', '/'))
+
+            else:
+                messages.info(request, 'Username already in use')
+                return HttpResponseRedirect('/signup')
 
     else:
         form = SignupForm()

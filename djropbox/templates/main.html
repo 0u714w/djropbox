@@ -16,6 +16,15 @@
         {% endif %}
         <h1>{{ header }}</h1>
         <br />
+
+        {% if messages %}
+        <ul class="messages" style='list-style: none; padding: 20px; background-color: rgba(255, 0, 0, 0.6); color: white; border-radius: 3px; border: red 2px solid; width: 20%; text-align: center;'>
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
         <form action='' method='post'>
             {% csrf_token %}
             {{ form.as_p }}

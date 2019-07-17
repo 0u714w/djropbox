@@ -27,3 +27,14 @@
 .button:hover, .nav-button:hover {
     background-color: rgb(1, 115, 154);
 }
+
+.messages {
+    list-style: none;
+    padding: 20px;
+    background-color: rgba(255, 0, 0, 0.6);
+    color: white;
+    border-radius: 3px;
+    border: red 2px solid;
+    width: 20%;
+    text-align: center;
+}
