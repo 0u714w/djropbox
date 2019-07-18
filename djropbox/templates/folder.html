@@ -11,6 +11,12 @@
     </head>
 
     <body>
+        {% if user.is_authenticated %}
+
+        {% include 'navbar.html' %}
+        
+        {% endif %}
+        <br />
         <h1>{{ user }}'s Folder </h1>
             <div>
                 <h3>Current Folder - {{ data.currentfolder }}</h3>
