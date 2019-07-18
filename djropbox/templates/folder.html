@@ -1,4 +1,17 @@
-<h1>{{ user }}'s Folder </h1>
+{% load staticfiles %}
+<!DOCTYPE html></html>
+<html lang='en' class='d-flex h-100 align-items-center'>
+    <head>
+        <meta charset='UTF-8' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <meta http-equiv='X-UA-Compatible' content='ie=edge' />
+        <link rel="stylesheet" href="{% static 'style.css' now 'U' %}" />
+        <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+        <title>Folders</title>
+    </head>
+
+    <body>
+        <h1>{{ user }}'s Folder </h1>
             <div>
                 <h3>Current Folder - {{ data.currentfolder }}</h3>
 
@@ -11,4 +24,6 @@
                 {% endfor %}
             </div>
 
-<a href="/profile">Back</a>
+        <a href="/profile"><button class="button" style="font-size: 20px; margin-top: 20px;"><i class='far fa-arrow-alt-circle-left' id="back-icon-folder"></i>Back</button></a>
+    </body>
+</html>

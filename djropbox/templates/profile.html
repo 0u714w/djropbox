@@ -1,28 +1,50 @@
-<h2> Welcome {{ user }}</h2>
-<h3> Your Files </h3>
-<div>
-    {% for object in data.files %}
-    <li><a href="{{ object.document.url }}">{{ object.name }}</a></li>
-    {% endfor %}
-</div>
-<br>
-<br>
-<h3> Your Folders </h3>
-<div>
-    {{ homefolder }}
-    {% for item in data.children %}
-        <li><a href="/folder/{{ item.id }}">{{ item.name }}</a></li>
-    {% endfor %}
-</div>
-<br>
-<br>
+{% load staticfiles %}
+<!DOCTYPE html></html>
+<html lang='en' class='d-flex h-100 align-items-center'>
+    <head>
+        <meta charset='UTF-8' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <meta http-equiv='X-UA-Compatible' content='ie=edge' />
+        <link rel="stylesheet" href="{% static 'style.css' now 'U' %}" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Profile</title>
+    </head>
 
-<form action='/add_folder/' method=""></form>
-{%  csrf_token %}
-<a href="/add_folder/">Create a folder</a>
-<form action='/add_file/' method="" enctype="multipart/form-data">
-    {% csrf_token %}
-        <a href='/add_file/'> Add a file </a>
+    <body>
+        {% if user.is_authenticated %}
+
+        {% include 'navbar.html' %}
+
+        {% endif %}
+        <br />
+
+        <h1> Welcome {{ user }}</h1>
+        <h2> Your Files </h2>
+        <div>
+            {% for object in data.files %}
+            <li><a href="{{ object.document.url }}">{{ object.name }}</a></li>
+            {% endfor %}
+        </div>
+        <br>
+        <br>
+        <h2> Your Folders </h2>
+        <div>
+            {{ homefolder }}
+            {% for item in data.children %}
+                <li><a href="/folder/{{ item.id }}">{{ item.name }}</a></li>
+            {% endfor %}
+        </div>
+        <br>
+        <br>
+
+        <form action='/add_folder/' method=""></form>
+        {%  csrf_token %}
+        <a href="/add_folder/"><button class="button" style="font-size: 20px;"><i class="fa fa-folder-o" id="file-icon"></i>New Folder</button></a>
+        <form action='/add_file/' method="" enctype="multipart/form-data">
+            {% csrf_token %}
+        <a href='/add_file/'><button class="button" style="font-size: 20px;"><i class="fa fa-file-o" id="file-icon"></i>New File</button></a>
         </form>
+        <!-- <a href="/"><button class="button"><i class="fa fa-home" id="home-icon"></i>Home</button></a> -->
+    </body>
 
-<a href="/">Home</a>
+</html>

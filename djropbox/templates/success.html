@@ -1,3 +1,16 @@
-<h1>Success!</h1>
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang='en' class='d-flex h-100 align-items-center'>
+    <head>
+        <meta charset='UTF-8' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <meta http-equiv='X-UA-Compatible' content='ie=edge' />
+        <link rel="stylesheet" href="{% static 'style.css' now 'U' %}" />
+        <title>Success</title>
+    </head>
+    <body> 
+        <h1>Success!</h1>
 
-<a href="/profile/">Back</a>
+        <a href="/profile/"><button class="button" style="font-size: 20px; margin-top: 20px;"><i class='far fa-arrow-alt-circle-left' id="back-icon-folder"></i>Back</button></a>
+    </body>
+</html>

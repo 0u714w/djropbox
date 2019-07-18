@@ -5,14 +5,15 @@
         <meta charset='UTF-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
         <meta http-equiv='X-UA-Compatible' content='ie=edge' />
-        <link rel="stylesheet" href="{% static 'style.css' %}" />
+        <link rel="stylesheet" href="{% static 'style.css' now 'U' %}" />
         <title>Navbar</title>
     </head>
     <body>
 
-        <div>
+        <div class="nav-container">
             {% if user.is_authenticated %}
             <a href='/'><button class="nav-button">Home</button></a>
+            <a href="/profile"><button class="nav-button">Profile</button></a>
             <a href='/logout/'><button class="nav-button">Logout</button></a>
             {% else %}
             <a href='/login/'><button class="nav-button">Login</button></a>
