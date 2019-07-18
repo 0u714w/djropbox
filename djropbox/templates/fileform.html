@@ -1,5 +1,31 @@
-<Form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit"/>
-</Form>
+{% load staticfiles %}
+<!DOCTYPE html></html>
+<html lang='en' class='d-flex h-100 align-items-center'>
+    <head>
+        <meta charset='UTF-8' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <meta http-equiv='X-UA-Compatible' content='ie=edge' />
+        <link rel="stylesheet" href="{% static 'style.css' now 'U' %}" />
+        <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+        <title>Add File</title>
+    </head>
+
+    <body>
+        {% if user.is_authenticated %}
+
+        {% include 'navbar.html' %}
+        
+        {% endif %}
+        <br />
+
+        <h1>Add a File</h1>
+
+        <Form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Submit" class="button"/>
+        </Form>
+        <a href="/profile/"><button class="button" style=" margin-top: 20px;"><i class='far fa-arrow-alt-circle-left' id="back-icon-folder"></i>Back</button></a>
+    </body>
+
+</html>

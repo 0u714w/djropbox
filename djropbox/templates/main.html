@@ -5,7 +5,7 @@
         <meta charset='UTF-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
         <meta http-equiv='X-UA-Compatible' content='ie=edge' />
-        <link rel="stylesheet" href="{% static 'style.css' %}" />
+        <link rel="stylesheet" href="{% static 'style.css' now 'U' %}" />
         <title>Login</title>
     </head>
     <body>
@@ -16,6 +16,15 @@
         {% endif %}
         <h1>{{ header }}</h1>
         <br />
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
         <form action='' method='post'>
             {% csrf_token %}
             {{ form.as_p }}
