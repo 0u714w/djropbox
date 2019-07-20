@@ -46,3 +46,11 @@ def signup_user(request):
 
     return render(request, html, {'header': header, 'form': form,
                                   'button_val': button_val})
+
+
+def handler404(request):
+    return render(request, '404.html', status=404)
+
+
+def handler500(request):
+    return render(request, '500.html', status=500)

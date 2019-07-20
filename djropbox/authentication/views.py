@@ -102,5 +102,14 @@ def folder_view(request, id):
     }
     return render(request, 'folder.html', context)
 
+
 def success_view(request):
     return render(request, 'success.html')
+
+
+def handler404(request, exception):
+    return render(request, '404.html', status=404)
+
+
+def handler500(request):
+    return render(request, '500.html', status=500)

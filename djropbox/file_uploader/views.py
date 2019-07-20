@@ -49,3 +49,11 @@ class FileView(View):
         else:
             form = Add_File
         return render(request, self.html, {'form': form})
+
+
+def handler404(request):
+    return render(request, '404.html', status=404)
+
+
+def handler500(request):
+    return render(request, '500.html', status=500)
