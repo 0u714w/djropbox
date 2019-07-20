@@ -25,6 +25,8 @@ from djropbox.user.views import signup_user
 from django.conf.urls.static import static
 from django.conf import settings
 
+import djropbox
+
 admin.site.register(BoxUser)
 admin.site.register(Folder)
 admin.site.register(NewFile)
@@ -42,3 +44,11 @@ urlpatterns = [
     path('add_file/', FileView.as_view()),
     path('success/', success_view)
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+handler404 = djropbox.user.views.handler404
+handler500 = djropbox.user.views.handler500
+handler404 = djropbox.file_uploader.views.handler404
+handler500 = djropbox.file_uploader.views.handler500
+handler404 = djropbox.authentication.views.handler404
+handler500 = djropbox.authentication.views.handler500
